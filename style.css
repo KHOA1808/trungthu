@@ -1,0 +1,425 @@
+/* =========================
+   TRUNG THU - STYLE
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    background:
+        radial-gradient(circle at 50% 15%, #283b79 0%, #111936 35%, #050817 75%);
+}
+
+/* =========================
+   BẦU TRỜI
+========================= */
+
+.sky {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Sao */
+.stars {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: white;
+    top: 12%;
+    left: 12%;
+    box-shadow:
+        120px 40px white,
+        250px 100px white,
+        380px 30px white,
+        520px 150px white,
+        680px 70px white,
+        800px 180px white,
+        950px 50px white,
+        1080px 130px white,
+        1200px 80px white;
+    animation: twinkle 2s infinite alternate;
+}
+
+.stars2 {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    top: 35%;
+    left: 8%;
+    box-shadow:
+        180px 80px #fff,
+        350px 10px #fff,
+        500px 120px #fff,
+        700px 50px #fff,
+        900px 100px #fff,
+        1100px 20px #fff;
+    animation: twinkle 1.5s infinite alternate-reverse;
+}
+
+.stars3,
+.stars4,
+.stars5 {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 2.5s infinite alternate;
+}
+
+.stars3 {
+    top: 20%;
+    left: 75%;
+}
+
+.stars4 {
+    top: 45%;
+    left: 25%;
+}
+
+.stars5 {
+    top: 30%;
+    left: 90%;
+}
+
+/* =========================
+   MẶT TRĂNG
+========================= */
+
+.moon {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 55px;
+    right: 10%;
+    border-radius: 50%;
+    background: #fff5bd;
+    box-shadow:
+        0 0 25px #fff5bd,
+        0 0 60px rgba(255, 245, 189, 0.6),
+        0 0 100px rgba(255, 245, 189, 0.25);
+    animation: moonFloat 4s ease-in-out infinite;
+}
+
+.moon::before,
+.moon::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(210, 190, 130, 0.25);
+}
+
+.moon::before {
+    width: 25px;
+    height: 25px;
+    top: 35px;
+    left: 35px;
+}
+
+.moon::after {
+    width: 18px;
+    height: 18px;
+    bottom: 35px;
+    right: 35px;
+}
+
+/* =========================
+   ĐÈN LỒNG
+========================= */
+
+.lantern {
+    position: absolute;
+    font-size: 55px;
+    filter: drop-shadow(0 0 15px rgba(255, 90, 80, 0.8));
+    animation: lanternSwing 3s ease-in-out infinite;
+}
+
+.lantern1 {
+    top: 10px;
+    left: 8%;
+}
+
+.lantern2 {
+    top: 80px;
+    left: 22%;
+    animation-delay: 0.7s;
+}
+
+.lantern3 {
+    top: 20px;
+    right: 25%;
+    animation-delay: 1.2s;
+}
+
+/* =========================
+   NỘI DUNG
+========================= */
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: min(900px, 92%);
+    margin: auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.small-title {
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    color: #ffe7a0;
+    text-shadow: 0 0 15px #ffd65a;
+    animation: fadeDown 1s ease;
+}
+
+h1 {
+    font-size: clamp(40px, 8vw, 75px);
+    line-height: 1.1;
+    margin-bottom: 40px;
+    color: #fff;
+    text-shadow:
+        0 0 10px #ff4f81,
+        0 0 30px rgba(255, 79, 129, 0.8);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+h1 span {
+    display: block;
+    color: #ff9bc0;
+}
+
+/* =========================
+   ALBUM
+========================= */
+
+.album {
+    position: relative;
+    width: min(750px, 92vw);
+    margin: 0 auto 50px;
+    padding: 15px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        0 0 40px rgba(255, 105, 160, 0.15);
+    animation: photoFloat 4s ease-in-out infinite;
+}
+
+.album img {
+    display: block;
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 3px solid rgba(255, 220, 230, 0.8);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+.album:hover img {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+
+.album button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 25px;
+    color: white;
+    background: rgba(255, 75, 125, 0.8);
+    box-shadow: 0 0 20px rgba(255, 75, 125, 0.7);
+    transition: 0.3s;
+}
+
+.album button:hover {
+    transform: translateY(-50%) scale(1.15);
+    background: #ff4f81;
+}
+
+#prevBtn {
+    left: -22px;
+}
+
+#nextBtn {
+    right: -22px;
+}
+
+/* =========================
+   LỜI NHẮN
+========================= */
+
+.message {
+    padding: 35px;
+    margin-top: 30px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+}
+
+.message h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    color: #ffb3ce;
+}
+
+.message p {
+    font-size: 18px;
+    line-height: 1.9;
+    margin: 12px 0;
+    color: #fff5fa;
+}
+
+/* =========================
+   NÚT QUÀ
+========================= */
+
+#giftBtn {
+    margin-top: 30px;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #ff4f81, #ff7b9e);
+    box-shadow:
+        0 8px 30px rgba(255, 79, 129, 0.5),
+        0 0 30px rgba(255, 79, 129, 0.3);
+    transition: 0.3s;
+}
+
+#giftBtn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:
+        0 12px 40px rgba(255, 79, 129, 0.7),
+        0 0 50px rgba(255, 79, 129, 0.4);
+}
+
+/* =========================
+   TIM BAY
+========================= */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 25px;
+    pointer-events: none;
+    z-index: 20;
+    animation: heartFly 5s linear forwards;
+}
+
+/* =========================
+   HIỆU ỨNG
+========================= */
+
+@keyframes twinkle {
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes moonFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes lanternSwing {
+    0%, 100% {
+        transform: rotate(-7deg);
+    }
+
+    50% {
+        transform: rotate(7deg);
+    }
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow:
+            0 0 10px #ff4f81,
+            0 0 20px rgba(255, 79, 129, 0.5);
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #ff4f81,
+            0 0 50px rgba(255, 79, 129, 0.9);
+    }
+}
+
+@keyframes photoFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(0.5deg);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartFly {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5) rotate(0);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(1.4) rotate(30deg);
+    }
+}
+
