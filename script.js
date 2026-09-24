@@ -119,10 +119,19 @@ if (giftBtn) {
 }
 
 // =========================
-// CLICK MÀN HÌNH → TIM
+// CLICK MÀN HÌNH → ẢNH NGƯỜI YÊU BAY
 // =========================
 
+const lovePhotos = [
+    "images/nguoiyeu1.jpg",
+    "images/nguoiyeu2.jpg",
+    "images/nguoiyeu3.jpg",
+    "images/nguoiyeu4.jpg"
+];
+
 document.addEventListener("click", (event) => {
+
+    // Không tạo ảnh khi bấm nút hoặc ảnh album
     if (
         event.target.tagName === "BUTTON" ||
         event.target.tagName === "IMG"
@@ -130,18 +139,45 @@ document.addEventListener("click", (event) => {
         return;
     }
 
-    const heart = document.createElement("div");
+    // Tạo 3 ảnh bay
+    for (let i = 0; i < 3; i++) {
 
-    heart.className = "heart";
-    heart.innerHTML = "💗";
+        setTimeout(() => {
 
-    heart.style.left = event.clientX + "px";
-    heart.style.bottom = (window.innerHeight - event.clientY) + "px";
-    heart.style.position = "fixed";
+            const photo = document.createElement("img");
 
-    document.body.appendChild(heart);
+            photo.className = "floating-photo";
 
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
+            // Chọn ảnh ngẫu nhiên
+            const randomPhoto =
+                lovePhotos[
+                    Math.floor(Math.random() * lovePhotos.length)
+                ];
+
+            photo.src = randomPhoto;
+
+            // Vị trí ngang ngẫu nhiên
+            photo.style.left =
+                (event.clientX - 35 + (Math.random() * 100 - 50)) + "px";
+
+            // Kích thước ngẫu nhiên
+            const size = 60 + Math.random() * 35;
+
+            photo.style.width = size + "px";
+            photo.style.height = size + "px";
+
+            // Độ xoay ngẫu nhiên
+            photo.style.transform =
+                `rotate(${Math.random() * 30 - 15}deg)`;
+
+            document.body.appendChild(photo);
+
+            // Xóa sau khi bay xong
+            setTimeout(() => {
+                photo.remove();
+            }, 5000);
+
+        }, i * 180);
+    }
 });
+
