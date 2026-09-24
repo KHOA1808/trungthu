@@ -76,14 +76,45 @@ setInterval(createHeart, 900);
 const giftBtn = document.getElementById("giftBtn");
 
 if (giftBtn) {
-    giftBtn.addEventListener("click", () => {
+    giftBtn.addEventListener("click", function () {
+
+        // Tạo 15 trái tim
         for (let i = 0; i < 15; i++) {
             setTimeout(() => {
                 createHeart();
             }, i * 100);
         }
 
-        alert("em K yêu chị ❤️\n\nMón quà nhỏ này là dành riêng cho chị eo của em K đóa");
+        // Hiện lời nhắn
+        let message = document.getElementById("giftMessage");
+
+        if (!message) {
+            message = document.createElement("div");
+            message.id = "giftMessage";
+
+            message.innerHTML = `
+                 em K yêu chị siêu nhiều 
+                <br><br>
+                Món quà nhỏ này là dành riêng cho chị eo của em K đóa 
+            `;
+
+            message.style.marginTop = "25px";
+            message.style.padding = "25px";
+            message.style.borderRadius = "20px";
+            message.style.background = "rgba(255, 105, 160, 0.2)";
+            message.style.border = "1px solid rgba(255,255,255,0.3)";
+            message.style.color = "white";
+            message.style.fontSize = "20px";
+            message.style.lineHeight = "1.8";
+            message.style.textAlign = "center";
+
+            giftBtn.parentNode.insertBefore(
+                message,
+                giftBtn.nextSibling
+            );
+        }
+
+        message.style.display = "block";
     });
 }
 
